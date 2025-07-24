@@ -1,16 +1,8 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
-const sourcemaps = require('gulp-sourcemaps');
-const uglify = require('gulp-uglify');
-
-function comprimeJavaScript() {
-    return gulp.src('./source/scripts/*.js')
-        .pipe(uglify())
-        .pipe(gulp.dest('./build/scripts'))
-}
 
 function compilaSass() {
-    return gulp.src('./source/styles/main.scss')
+    return gulp.src('./source/estilos/main.scss')
     .pipe(sourcemaps.init())
         .pipe(sass({
             outputStyle: 'compressed'
@@ -41,11 +33,4 @@ function digaTchau(){
 
 exports.default = gulp.parallel (funcaoPadrao, digaOi);
 exports.digaOi = digaOi;
-
 exports.sass = compilaSass;
-
-exports.watch = function() {
-    gulp.watch('./source/styles/*.scss', { ignoreInitial: false }, gulp.series(compilaSass));
-}
-
-exports.javascript = comprimeJavaScript;
