@@ -1,5 +1,5 @@
-@use 'variaveis';
+@use 'variables';
 
 body {
-    background-color: variaveis.$corPrincipal;
+    background-color: variables.$corMain;
 }

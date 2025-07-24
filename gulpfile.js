@@ -2,12 +2,8 @@ const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 
 function compilaSass() {
-    return gulp.src('./source/estilos/main.scss')
-    .pipe(sourcemaps.init())
-        .pipe(sass({
-            outputStyle: 'compressed'
-        }))
-        .pipe(sourcemaps.write('./maps'))
+    return gulp.src('./source/estilos/*.scss')
+        .pipe(sass())
         .pipe(gulp.dest('./build/styles'));
 }
 
