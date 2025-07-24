@@ -1,4 +1,9 @@
 body {
-  background-color: black;
+  background-color: rgb(255, 251, 245);
 }
 
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(18, 18, 18);
+}
+/*# sourceMappingURL=maps/main.css.map */

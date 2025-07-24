@@ -1,10 +1,16 @@
 const gulp = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
+const { init } = require('gulp-sourcemaps');
+const sass = require('gulp-sass')(require('sass')); // Adionado para compila sass
+const sourcemaps = require('gulp-sourcemaps'); // Adicionado para o sourcemaps
 
 function compilaSass() {
-    return gulp.src('./source/estilos/*.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('./build/styles'));
+    return gulp.src('./source/estilos/*.scss') // Adionado para compila sass
+    .pipe(sourcemaps.init())  // Adicionado para o sourcemaps
+        .pipe(sass({ // Adionado para compila sass
+            outputStyle: 'compressed'
+        }))
+        .pipe(sourcemaps.write('./maps')) // Adicionado para o sourcemaps
+        .pipe(gulp.dest('./build/styles')); // Adionado para compila sass
 }
 
 function funcaoPadrao(callback) {
@@ -29,4 +35,7 @@ function digaTchau(){
 
 exports.default = gulp.parallel (funcaoPadrao, digaOi);
 exports.digaOi = digaOi;
-exports.sass = compilaSass;
+exports.sass = compilaSass; // Adionado para compila sass
+exports.watch = function() { // Adicionado para o watch
+    gulp.watch('./source/estilos/*.scss', gulp.series(compilaSass)); // Adicionado para o watch
+}
